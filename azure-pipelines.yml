@@ -8,7 +8,7 @@ steps:
   - task: AzureCLI@2
     displayName: "Terraform Init, Validate and Plan"
     inputs:
-      azureSubscription: "azure-aks-connection"
+      azureSubscription:"azure-aks-wif-practice"
       scriptType: "bash"
       scriptLocation: "inlineScript"
       inlineScript: |
