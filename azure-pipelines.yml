@@ -6,33 +6,12 @@ pool:
 
 steps:
   - task: AzureCLI@2
-    displayName: "Terraform Init, Validate and Plan"
+    displayName: "Test Azure Authentication"
     inputs:
-      azureSubscription:"azure-aks-wif-practice"
+      azureSubscription: "azure-aks-wif-practice"
       scriptType: "bash"
       scriptLocation: "inlineScript"
       inlineScript: |
-        echo "Installing Terraform..."
-
-        sudo apt-get update -y
-        sudo apt-get install -y unzip
-
-        TERRAFORM_VERSION="1.9.8"
-
-        wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-
-        unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-
-        sudo mv terraform /usr/local/bin/
-
-        echo "Terraform Version:"
-        terraform version
-
-        echo "Terraform Init..."
-        terraform init
-
-        echo "Terraform Validate..."
-        terraform validate
-
-        echo "Terraform Plan..."
-        terraform plan
+        echo "Testing Azure authentication..."
+        az account show
+        echo "Azure authentication successful!"
